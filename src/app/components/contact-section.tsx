@@ -231,25 +231,12 @@ export default function ContactSection() {
                           Direct Email
                         </p>
                         <p className="text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl break-all">
-                          Bookingjaekush@gmail.com
+                          lzloudlyvisuals@outlook.com
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-r from-slate-800/50 to-gray-800/50 border border-blue-500/10 backdrop-blur-xl hover:border-blue-400/30 transition-all duration-300 group/item">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover/item:shadow-blue-500/30 transition-all duration-300">
-                        <Phone className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" />
-                      </div>
-                      <div>
-                        <p className="text-blue-200/70 text-xs sm:text-sm font-bold uppercase tracking-widest mb-1">
-                          Direct Line
-                        </p>
-                        <p className="text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl">
-                          +1 312 818 8320
-                        </p>
-                      </div>
-                    </div>
-
+                   
                     <div className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-r from-slate-800/50 to-gray-800/50 border border-red-500/10 backdrop-blur-xl hover:border-red-400/30 transition-all duration-300 group/item">
                       <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg shadow-red-500/20 group-hover/item:shadow-red-500/30 transition-all duration-300">
                         <MapPin className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white" />
@@ -258,7 +245,7 @@ export default function ContactSection() {
                         <p className="text-red-200/70 text-xs sm:text-sm font-bold uppercase tracking-widest mb-1">
                           Based In
                         </p>
-                        <p className="text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl">Chicago</p>
+                        <p className="text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl">USA</p>
                       </div>
                     </div>
 

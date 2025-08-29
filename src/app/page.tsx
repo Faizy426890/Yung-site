@@ -426,7 +426,7 @@ export default function BlacRubyPortfolio() {
         </section> */}
 
         {/* Music Links Section */}
-        <MusicSection />
+       
 
         {/* Callout for Street Elegance */}
         <section className="py-20 px-6 md:px-12 bg-gradient-to-b from-slate-950 to-purple-950 relative z-10">
@@ -446,7 +446,6 @@ export default function BlacRubyPortfolio() {
           </div>
         </section>
 
-        <OutNowSection />
 
         {/* Fan Quote Block */}
         <section className="py-20 px-6 md:px-12 bg-gradient-to-b from-purple-950 to-slate-950 relative z-10">
