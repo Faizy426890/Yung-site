@@ -483,13 +483,13 @@ export default function BlacRubyPortfolio() {
             >
               <Button
                 className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white border-0 px-8 py-3 rounded-full font-medium shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 transition-all duration-300 hover:scale-105"
-                onClick={() => window.open("https://www.instagram.com/jaekush111?igsh=MWdmZjV2NXN6OTU2dg==", "_blank")}
+                onClick={() => window.open("https://www.instagram.com/louiezartists?igsh=MW5kZWUydGlsZnZ1dw==", "_blank")}
               >
                 Follow for updates
               </Button>
               <Button
                 className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0 px-8 py-3 rounded-full font-medium shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 hover:scale-105"
-                onClick={() => window.open("https://www.instagram.com/jaekush111?igsh=MWdmZjV2NXN6OTU2dg==", "_blank")}
+                onClick={() => window.open("https://www.instagram.com/louiezartists?igsh=MW5kZWUydGlsZnZ1dw==", "_blank")}
               >
                 Follow on Instagram
               </Button>
