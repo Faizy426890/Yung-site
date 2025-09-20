@@ -104,7 +104,8 @@ export default function BlacRubyPortfolio() {
   return (
     <div className="min-h-screen bg-white text-white font-sans overflow-hidden relative">
       {/* Checkered Background Pattern */}
-     <HeroSection/>
+     <HeroSection/> 
+     <MusicSection /> 
 
       {/* Mobile Sidebar */}
    

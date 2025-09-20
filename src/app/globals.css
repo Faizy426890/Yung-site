@@ -74,5 +74,87 @@
   }
   body {
     @apply bg-background text-foreground;
+  } 
+   .glass-card {
+    @apply backdrop-blur-md bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10;
+    box-shadow: 
+      0 8px 32px rgba(255, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 0 40px rgba(255, 0, 0, 0.05);
+  }
+
+  .glass-card-focused {
+    @apply glass-card scale-150 opacity-100;
+    box-shadow: 
+      0 20px 60px rgba(255, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 0 80px rgba(255, 0, 0, 0.2);
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  .glass-card-blur {
+    @apply glass-card scale-90 opacity-40 blur-[1px];
+  }
+
+  .glass-button {
+    @apply backdrop-blur-sm bg-white/10 border border-white/20 hover:bg-white/20;
+    box-shadow: 0 4px 16px rgba(255, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-button:hover {
+    box-shadow: 0 8px 32px rgba(255, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+
+  /* Platform Buttons */
+  .btn-spotify {
+    @apply bg-green-500 hover:bg-green-400 text-black font-bold;
+    box-shadow: 0 4px 20px rgba(29, 185, 84, 0.3);
+  }
+
+  .btn-youtube {
+    @apply bg-red-500 hover:bg-red-400 text-white font-bold;
+    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
+  }
+
+  .btn-apple {
+    @apply bg-pink-500 hover:bg-pink-400 text-white font-bold;
+    box-shadow: 0 4px 20px rgba(250, 87, 193, 0.3);
+  }
+
+  .btn-tidal {
+    @apply bg-cyan-500 hover:bg-cyan-400 text-black font-bold;
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
+  }
+
+  /* Neon Text */
+  .neon-text {
+    text-shadow: 0 0 10px currentColor;
+  }
+
+  /* Scroll Snap */
+  .scroll-snap-x {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .scroll-snap-center {
+    scroll-snap-align: center;
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 
+      0 20px 60px rgba(255, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 0 80px rgba(255, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 
+      0 25px 80px rgba(255, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      0 0 120px rgba(255, 0, 0, 0.3);
   }
 }

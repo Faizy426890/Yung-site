@@ -1,142 +1,188 @@
-'use client'
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { Instagram, Twitter, Music, Play } from "lucide-react";
 
-
-const HeroSection = () => {
+export default function HeroSection() {
   return (
-    <div className="min-h-screen bg-hero-gradient relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-20 h-20 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-32 h-32 bg-accent/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-20 left-1/3 w-24 h-24 bg-primary/30 rounded-full blur-xl animate-pulse delay-500"></div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Background with Red Gradients matching reference */}
+      <div className="absolute inset-0 z-0">
+        {/* Base dark background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black" />
+        
+        {/* Left Red Gradient Shape - matching reference */}
+        <div className="absolute -left-32 top-0 h-full w-96 bg-gradient-to-r from-red-600/40 via-red-500/30 to-transparent transform -skew-x-12" />
+        <div className="absolute -left-16 top-0 h-full w-80 bg-gradient-to-r from-red-700/30 via-red-600/20 to-transparent transform -skew-x-12" />
+        
+        {/* Right Red Gradient Shape - matching reference */}
+        <div className="absolute -right-32 top-0 h-full w-96 bg-gradient-to-l from-red-600/40 via-red-500/30 to-transparent transform skew-x-12" />
+        <div className="absolute -right-16 top-0 h-full w-80 bg-gradient-to-l from-red-700/30 via-red-600/20 to-transparent transform skew-x-12" />
+        
+        {/* Top gradient glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-40 bg-gradient-to-b from-red-500/20 to-transparent" />
+        
+        {/* Bottom gradient glow */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-40 bg-gradient-to-t from-red-500/20 to-transparent" />
       </div>
 
-      {/* Navigation */}
-      <nav className="relative z-10 flex items-center justify-between p-6 lg:px-12">
-        <div className="flex items-center space-x-2">
-          <div className="w-10 h-10 bg-accent-gradient rounded-full flex items-center justify-center">
-            <Music className="w-6 h-6 text-accent-foreground" />
-          </div>
-          <span className="text-xl font-bold text-foreground">YUNG RAVAGE</span>
-        </div>
-        
-        <div className="hidden md:flex items-center space-x-8">
-          <a href="#home" className="text-foreground hover:text-primary transition-colors">Home</a>
-          <a href="#music" className="text-foreground hover:text-primary transition-colors">Music</a>
-          <a href="#about" className="text-foreground hover:text-primary transition-colors">About</a>
-          <a href="#contact" className="text-foreground hover:text-primary transition-colors">Contact</a>
-        </div>
-
-        <Button variant="hero" size="sm" className="hidden md:flex">
-          Get In Touch
-        </Button>
-      </nav>
-
-      {/* Hero Content */}
-      <div className="relative z-10 container mx-auto px-6 lg:px-12 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
+      {/* Main Content Container */}
+      <div className="relative z-20 container mx-auto px-6 max-w-7xl">
+        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
+          
+          {/* Left Side - Artist Info */}
           <div className="space-y-8">
-            <div className="space-y-4">
-              <div className="inline-flex items-center px-4 py-2 bg-muted/50 rounded-full text-sm text-muted-foreground backdrop-blur-sm">
-                ✨ Welcome to my world
+            {/* Stats Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl">
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-green-400 text-sm font-semibold">LIVE</span>
               </div>
-              
+              <div className="w-px h-4 bg-white/30"></div>
+              <span className="text-white/90 text-sm font-medium">50K+ Fans Worldwide</span>
+            </div>
+
+            {/* Stage Name & Real Name */}
+            <div className="space-y-4">
               <div className="space-y-2">
-                <h1 className="text-5xl lg:text-7xl font-bold text-foreground leading-tight">
-                  Hi, I'm{" "}
-                  <span className="bg-accent-gradient bg-clip-text text-transparent">
-                    YUNG RAVAGE
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight">
+                  <span className="bg-gradient-to-r from-gray-400 via-red-500 to-gray-100 bg-clip-text text-transparent">
+                    YUNG
+                  </span>
+                  <br />
+                  <span className="bg-gradient-to-r from-white via-red-100 to-red-300 bg-clip-text text-transparent">
+                    RAVAGE
                   </span>
                 </h1>
-                <h2 className="text-3xl lg:text-4xl font-semibold text-primary">
-                  Hip-Hop Artist & Mogul
-                </h2>
+                <p className="text-lg text-white/70 font-medium">
+                  Robert Bernard Lincoln II
+                </p>
+              </div>
+              
+              <h2 className="text-2xl md:text-3xl font-bold text-white/90 tracking-wide">
+                OWN THE STAGE • RHYTHM IN EVERY BAR
+              </h2>
+            </div>
+
+            {/* Bio Section */}
+            <div className="backdrop-blur-lg bg-white/5 rounded-2xl p-6 border border-white/10 shadow-2xl">
+              <h3 className="text-xl font-bold text-red-400 mb-4">Artist Bio</h3>
+              <div className="space-y-3 text-white/80 leading-relaxed">
+                <p>Born in Atlanta Georgia and raised in Detroit Michigan.</p>
+                <p>I want to just leave a legacy for my daughter to live by.</p>
+                <p>I want to leave a stamp on the world as a mogul artist.</p>
+                <p>An artist that spreads light and positivity.</p>
+                <p>Giving people the motivation to achieve what they want from life.</p>
               </div>
             </div>
 
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-              Born in Atlanta Georgia, raised in Detroit Michigan. I'm here to leave a legacy for my daughter 
-              and spread light and positivity. My mission is to motivate people to achieve what they want from life 
-              and leave a stamp on the world as an artist who makes a difference.
-            </p>
-
+            {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="lg" className="group">
-                <Play className="w-5 h-5 mr-2 group-hover:animate-pulse" />
-                Listen Now
-              </Button>
-              <Button variant="hero-outline" size="lg">
-                View Portfolio
-              </Button>
+              {/* Primary Button */}
+             <button
+  className="
+    group relative 
+    px-8 py-4 
+    bg-white/5 
+    backdrop-blur-xl 
+    rounded-2xl 
+    border border-white/20 
+    shadow-xl shadow-black/40 
+    transform transition-all duration-500 
+    hover:scale-105 
+    hover:shadow-2xl hover:shadow-white/20 
+    overflow-hidden
+  "
+>
+  <div 
+    className="
+      absolute inset-0 
+      bg-gradient-to-r from-transparent via-white/10 to-transparent 
+      opacity-0 group-hover:opacity-100 
+      transition-opacity duration-500 
+      blur-xl 
+    " 
+  />
+
+  <div className="relative flex items-center gap-3 font-bold text-lg text-white">
+    🔥 Book for a Show
+  </div>
+  
+  <div 
+    className="
+      absolute inset-0 
+      bg-gradient-to-r from-transparent via-white/40 to-transparent 
+      -skew-x-12 opacity-0 
+      group-hover:opacity-100 group-hover:animate-pulse 
+      transition-opacity duration-500
+    " 
+  />
+</button>
+              {/* Secondary Button */}
+              <button className="group relative px-8 py-4 bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 shadow-2xl transform transition-all duration-300 hover:scale-105 hover:bg-white/20 hover:border-red-400/50 hover:shadow-red-400/25 hover:shadow-2xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-red-400/30 to-red-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg" />
+                <div className="relative flex items-center gap-3 font-bold text-lg text-white group-hover:text-red-100 transition-colors duration-300">
+                  🎧 Watch Live Freestyle
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </button>
             </div>
 
-            <div className="flex items-center space-x-4 pt-4">
-              <span className="text-sm text-muted-foreground">Follow the journey:</span>
-              <div className="flex space-x-3">
-                <a 
-                  href="#" 
-                  className="w-10 h-10 bg-muted/50 rounded-full flex items-center justify-center hover:bg-primary hover:shadow-glow transition-all duration-300 backdrop-blur-sm"
-                >
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a 
-                  href="#" 
-                  className="w-10 h-10 bg-muted/50 rounded-full flex items-center justify-center hover:bg-primary hover:shadow-glow transition-all duration-300 backdrop-blur-sm"
-                >
-                  <Twitter className="w-5 h-5" />
-                </a>
-                <a 
-                  href="#" 
-                  className="w-10 h-10 bg-muted/50 rounded-full flex items-center justify-center hover:bg-primary hover:shadow-glow transition-all duration-300 backdrop-blur-sm"
-                >
-                  <Music className="w-5 h-5" />
-                </a>
+            {/* Performance Stats */}
+            <div className="grid grid-cols-3 gap-4">
+              <div className="backdrop-blur-lg bg-white/5 rounded-xl p-4 border border-white/10 shadow-xl hover:bg-white/10 transition-all duration-300">
+                <div className="text-2xl font-black text-red-400 mb-1">127</div>
+                <div className="text-white/70 text-sm font-medium">Shows</div>
+              </div>
+
+              <div className="backdrop-blur-lg bg-white/5 rounded-xl p-4 border border-white/10 shadow-xl hover:bg-white/10 transition-all duration-300">
+                <div className="text-2xl font-black text-red-400 mb-1">2.5M</div>
+                <div className="text-white/70 text-sm font-medium">Views</div>
+              </div>
+
+              <div className="backdrop-blur-lg bg-white/5 rounded-xl p-4 border border-white/10 shadow-xl hover:bg-white/10 transition-all duration-300">
+                <div className="text-2xl font-black text-red-400 mb-1">98%</div>
+                <div className="text-white/70 text-sm font-medium">Energy</div>
               </div>
             </div>
           </div>
 
-          {/* Right Content - Artist Image */}
-          <div className="relative lg:justify-self-end">
-            <div className="relative">
-              {/* Glowing backdrop */}
-              <div className="absolute inset-0 bg-primary/30 rounded-3xl blur-3xl transform rotate-6"></div>
+          {/* Right Side - Performance Image */}
+          <div className="relative lg:h-[600px] h-[400px]">
+            {/* Image Container with Glassmorphism */}
+            <div className="relative h-full rounded-3xl overflow-hidden backdrop-blur-lg bg-white/5 border border-white/10 shadow-2xl">
+              {/* Performance Image */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: `url('https://res.cloudinary.com/diml90c1y/image/upload/v1758331649/7bb10b39-e1c9-4538-8619-b29984e2c8a1_aqhlzn.jpg')`
+                }}
+              />
               
-              {/* Main image container */}
-              <div className="relative bg-gradient-to-tr from-primary/20 to-accent/20 rounded-3xl p-1 backdrop-blur-sm">
-                <div className="bg-card/50 rounded-3xl overflow-hidden backdrop-blur-sm">
-                  <img 
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdmnUn448MbrGd73XnnMauADHQnJk3nrD6FLRXnMwboTvu-tcHy-UBhzlWpoeC6myYCF4&usqp=CAU"
-                    alt="YUNG RAVAGE - Hip-Hop Artist"
-                    className="w-full h-[500px] lg:h-[600px] object-cover object-center"
-                  />
+              {/* Image Overlay for better integration */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+              <div className="absolute inset-0 bg-gradient-to-r from-red-900/20 via-transparent to-red-900/20" />
+              
+              {/* Floating Performance Badge */}
+              <div className="absolute top-6 right-6 backdrop-blur-lg bg-red-600/20 rounded-full px-4 py-2 border border-red-400/30">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
+                  <span className="text-red-300 text-sm font-semibold">PERFORMING</span>
                 </div>
               </div>
 
-              {/* Floating elements */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-accent-gradient rounded-full flex items-center justify-center shadow-strong animate-bounce">
-                <Music className="w-10 h-10 text-accent-foreground" />
-              </div>
-              
-              <div className="absolute -bottom-6 -left-6 bg-card/80 backdrop-blur-sm rounded-2xl p-4 shadow-strong">
-                <div className="text-sm text-muted-foreground">Legacy Builder</div>
-                <div className="text-lg font-semibold text-foreground">Detroit ↔ Atlanta</div>
+              {/* Bottom Info Overlay */}
+              <div className="absolute bottom-6 left-6 right-6 backdrop-blur-lg bg-black/30 rounded-2xl p-4 border border-white/10">
+                <div className="text-white font-bold text-lg">Live at The Stage</div>
+                <div className="text-white/70 text-sm">Detroit • Atlanta Vibes</div>
               </div>
             </div>
+
+            {/* Decorative Glow Effects around Image */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-red-600/20 to-red-400/20 rounded-3xl blur-2xl opacity-50 -z-10"></div>
+            <div className="absolute -inset-8 bg-gradient-to-r from-red-500/10 to-red-300/10 rounded-3xl blur-3xl opacity-30 -z-20"></div>
           </div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
-        </div>
-      </div>
-    </div>
+    </section> 
   );
-};
-
-export default HeroSection;
+}
