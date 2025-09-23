@@ -112,8 +112,8 @@ export default function BlacRubyPortfolio() {
 
       {/* Professional Glassy Navbar */}
      
-
-      {/* <ContactSection /> */}
+      <OutNowSection/>
+      <ContactSection />
 
       {/* Footer */}
       <footer className="py-8 px-6 md:px-12 text-center text-white/60 text-sm border-t border-white/10 bg-slate-950">
