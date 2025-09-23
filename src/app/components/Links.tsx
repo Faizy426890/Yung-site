@@ -60,7 +60,7 @@ export function SocialMediaLinks() {
       <div className="relative z-10">
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-white mb-3 tracking-tight bg-gradient-to-r from-cyan-400 via-white to-cyan-300 bg-clip-text text-transparent drop-shadow-lg">
-            Connect With Louie Z
+            Connect With Yung
           </h1>
           <p className="text-gray-300 text-xl font-medium">Follow the journey across all platforms</p>
         </div>

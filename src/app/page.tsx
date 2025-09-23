@@ -34,7 +34,7 @@ export default function BlacRubyPortfolio() {
   }
 
   // Word-by-word animation for "Jae Kush"
-  const nameWords = ["Louie", "Z"]
+  const nameWords = ["Yung", ""]
   const wordVariants = {
     hidden: { opacity: 0, y: 50, rotateX: -90 },
     visible: (i: number) => ({

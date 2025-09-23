@@ -369,7 +369,7 @@ export default function AboutSection() {
               >
                 <div className="text-center">
                   <span className="text-white font-bold text-xl tracking-wide bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                   Louie Z
+                   Yung 
                   </span>
                 </div>
               </motion.div>

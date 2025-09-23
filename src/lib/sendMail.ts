@@ -35,7 +35,7 @@ export async function sendContactEmail(formData: FormData) {
           <div style="background: linear-gradient(135deg, #00d4ff 0%, #ff0080 50%, #7928ca 100%); padding: 40px 30px; text-align: center; position: relative;">
             <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 20px; display: inline-block;">
               <h1 style="margin: 0; font-size: 32px; font-weight: 800; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.3); letter-spacing: -0.5px;">✨ New Message</h1>
-              <p style="margin: 8px 0 0 0; color: rgba(255,255,255,0.9); font-size: 16px; font-weight: 500;">From Blac Ruby Portfolio</p>
+              <p style="margin: 8px 0 0 0; color: rgba(255,255,255,0.9); font-size: 16px; font-weight: 500;">From Yung Portfolio</p>
             </div>
           </div>
           
@@ -90,8 +90,8 @@ export async function sendContactEmail(formData: FormData) {
           <!-- Footer -->
           <div style="background: rgba(0,0,0,0.3); padding: 25px 30px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1);">
             <p style="margin: 0; color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.5;">
-              This email was sent from the <strong style="color: #00d4ff;">Blac Ruby</strong> portfolio contact form.<br>
-              <span style="color: rgba(255,255,255,0.4);">Sent with ❤️ by Blacc Ruby Team</span>
+              This email was sent from the <strong style="color: #00d4ff;">Yung</strong> portfolio contact form.<br>
+              <span style="color: rgba(255,255,255,0.4);">Sent with ❤️ by Yung's Team</span>
             </p>
           </div>
         </div>

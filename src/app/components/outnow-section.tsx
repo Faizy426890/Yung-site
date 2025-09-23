@@ -213,7 +213,7 @@ export default function OutNowSection() {
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed font-medium px-4"
             variants={itemVariants}
           >
-            Experience the latest from Louie Z's musical journey.
+            Experience the latest from Yung's musical journey.
             <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-300 to-red-500 font-semibold drop-shadow-sm">
               Each track tells a story of dedication, passion, and street elegance.
