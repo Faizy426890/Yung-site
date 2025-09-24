@@ -1,120 +1,274 @@
-import { Music } from "lucide-react"
+import React from 'react';
+import { Instagram, Youtube, MessageCircle, Star, Users, TrendingUp, ExternalLink } from 'lucide-react';
 
-export function SocialMediaLinks() {
-  // Custom SVG Icons
-  const YouTubeIcon = () => (
-    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
-      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-    </svg>
-  )
+interface SocialCard {
+  platform: string;
+  username: string;
+  followers: string;
+  engagement: string;
+  status: string;
+  color: string;
+  icon: React.ReactNode;
+  bgGradient: string;
+  featured: string;
+  stats: {
+    posts: string;
+    label: string;
+  };
+  rating: string;
+  url: string;
+}
 
-  const InstagramIcon = () => (
-    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-4.358-.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-    </svg>
-  )
+const socialData: SocialCard[] = [
+  {
+    platform: 'Instagram',
+    username: 'yung_ravage',
+    followers: '125K',
+    engagement: '8.4%',
+    status: 'DAILY POSTS',
+    color: 'from-pink-500 to-purple-600',
+    icon: <Instagram size={28} />,
+    bgGradient: 'from-pink-500/20 to-purple-600/20',
+    featured: 'Latest Stories & Reels',
+    stats: { posts: '2.1K', label: 'POSTS' },
+    rating: '4.9',
+    url: 'https://www.instagram.com/yung_ravage?igsh=bnh0OXd2OXcyd3d2'
+  },
+  {
+    platform: 'YouTube',
+    username: 'YUNG RAVAGE',
+    followers: '89K',
+    engagement: '12.3%',
+    status: 'NEW UPLOADS',
+    color: 'from-red-500 to-red-600',
+    icon: <Youtube size={28} />,
+    bgGradient: 'from-red-500/20 to-red-600/20',
+    featured: 'Music Videos & Content',
+    stats: { posts: '156', label: 'VIDEOS' },
+    rating: '4.8',
+    url: 'https://www.youtube.com/channel/UCNKynbHhfQq58XWygZAfQlQ'
+  },
+  {
+    platform: 'SnapChat',
+    username: 'youngtana',
+    followers: '98K',
+    engagement: '11.1%',
+    status: 'STORY ACTIVE',
+    color: 'from-yellow-400 to-yellow-500',
+    icon: <MessageCircle size={28} />,
+    bgGradient: 'from-yellow-400/20 to-yellow-500/20',
+    featured: 'Behind The Scenes',
+    stats: { posts: '1.2K', label: 'SNAPS' },
+    rating: '4.8',
+    url: 'https://www.snapchat.com/add/youngtana'
+  }
+];
 
-  const SpotifyIcon = () => (
-    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
-      <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z" />
-    </svg>
-  )
-
-  const socialLinks = [
-    {
-      name: "YouTube",
-      url: "https://youtube.com/@lzloudlyvisuals?si=8P22WsSnrvIMPBPy",
-      icon: YouTubeIcon,
-      color: "from-red-500 to-red-600",
-      stats: "Visual Content",
-    },
-    {
-      name: "Instagram",
-      url: "https://www.instagram.com/louiezartists?igsh=MW5kZWUydGlsZnZ1dw==",
-      icon: InstagramIcon,
-      color: "from-pink-500 via-purple-500 to-pink-600",
-      stats: "Behind the Scenes",
-    },
-    {
-      name: "Spotify",
-      url: "https://open.spotify.com/artist/0Z3WN6svAClDBpfbk2HLz8?si=PnlfQUGdRAS7SAGK18Jlog",
-      icon: SpotifyIcon,
-      color: "from-green-400 to-emerald-500",
-      stats: "Latest Tracks",
-    },
-  ]
+function SocialMediaCard({ card }: { card: SocialCard }) {
+  const handleCardClick = () => {
+    window.open(card.url, '_blank', 'noopener,noreferrer');
+  };
 
   return (
-   <div className="w-full 
-  bg-gradient-to-br from-black via-gray-950 to-gray-900 
-  p-10 rounded-3xl 
-  backdrop-blur-2xl 
-  border border-cyan-400/40 
-  shadow-[0_0_25px_rgba(0,255,255,0.3),0_0_60px_rgba(0,255,255,0.15)] 
-  relative overflow-hidden 
-  text-cyan-300 tracking-wide
-  before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-tr before:from-cyan-500/20 before:to-transparent before:opacity-30 before:blur-3xl before:animate-pulse
-">
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-blue-500/5 rounded-3xl" />
+    <div 
+      onClick={handleCardClick}
+      className={`
+        relative overflow-hidden rounded-3xl p-8
+        bg-gradient-to-br ${card.bgGradient}
+        backdrop-blur-xl border border-white/10
+        hover:border-white/30 hover:scale-[1.03]
+        transition-all duration-700 ease-out
+        group cursor-pointer
+        shadow-2xl hover:shadow-4xl
+        transform-gpu
+        min-h-[420px] sm:min-h-[450px]
+      `}
+    >
+      {/* Animated background glow */}
+      <div className={`
+        absolute inset-0 opacity-0 group-hover:opacity-20
+        bg-gradient-to-br ${card.color}
+        transition-opacity duration-700 blur-3xl -z-10
+      `} />
+      
+      {/* Floating particles effect */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className={`
+          absolute top-4 right-4 w-2 h-2 rounded-full
+          bg-gradient-to-r ${card.color} opacity-60
+          animate-pulse
+        `} />
+        <div className={`
+          absolute bottom-8 left-6 w-1 h-1 rounded-full
+          bg-gradient-to-r ${card.color} opacity-40
+          animate-pulse delay-1000
+        `} />
+      </div>
 
-      <div className="relative z-10">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-white mb-3 tracking-tight bg-gradient-to-r from-cyan-400 via-white to-cyan-300 bg-clip-text text-transparent drop-shadow-lg">
-            Connect With Yung
+      {/* External link indicator */}
+      <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <ExternalLink className="w-5 h-5 text-white/60" />
+      </div>
+      
+      {/* Platform icon with enhanced styling */}
+      <div className={`
+        inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6
+        bg-gradient-to-br ${card.color} shadow-2xl
+        group-hover:scale-110 group-hover:rotate-3
+        transition-all duration-500 ease-out
+        border border-white/20
+      `}>
+        <div className="text-white drop-shadow-lg">
+          {card.icon}
+        </div>
+      </div>
+
+      {/* Platform name and status */}
+      <div className="flex items-center justify-between mb-3">
+        <h3 className="text-2xl font-black text-white tracking-tight">{card.platform}</h3>
+        <span className={`
+          text-xs px-3 py-1.5 rounded-full font-bold tracking-wider
+          bg-gradient-to-r ${card.color} text-white shadow-lg
+          group-hover:shadow-xl transition-shadow duration-300
+        `}>
+          {card.status}
+        </span>
+      </div>
+
+      {/* Username with enhanced styling */}
+      <p className="text-white/80 text-base mb-4 font-medium">{card.username}</p>
+
+      {/* Featured content section */}
+      <div className="mb-6">
+        <div className="flex items-center gap-2 mb-3">
+          <Star className="w-4 h-4 text-yellow-400 fill-yellow-400 drop-shadow-sm" />
+          <span className="text-yellow-400 text-xs font-bold tracking-wider">FEATURED</span>
+        </div>
+        <p className="text-white font-semibold text-base leading-relaxed">{card.featured}</p>
+      </div>
+
+      {/* Enhanced stats section */}
+      <div className="flex justify-between items-center mb-6">
+        <div className="text-center">
+          <div className="text-3xl font-black bg-gradient-to-r from-white to-white/90 bg-clip-text text-transparent mb-1">
+            {card.stats.posts}
+          </div>
+          <div className="text-white/60 text-xs font-semibold tracking-wide">{card.stats.label}</div>
+        </div>
+        <div className="text-center">
+          <div className="flex items-center justify-center gap-2 text-white/80 mb-1">
+            <Users className="w-5 h-5" />
+            <span className="text-2xl font-black">{card.followers}</span>
+          </div>
+          <div className="text-white/60 text-xs font-semibold tracking-wide">FOLLOWERS</div>
+        </div>
+      </div>
+
+      {/* Engagement and rating */}
+      <div className="flex justify-between items-center mb-6">
+        <div className="flex items-center gap-2">
+          <TrendingUp className="w-5 h-5 text-green-400 drop-shadow-sm" />
+          <span className="text-white/80 text-sm font-medium">Engagement {card.engagement}</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Star className="w-5 h-5 text-yellow-400 fill-yellow-400 drop-shadow-sm" />
+          <span className="text-white font-bold text-lg">{card.rating}</span>
+        </div>
+      </div>
+
+      {/* Enhanced action button */}
+      <button className={`
+        w-full py-4 rounded-2xl font-bold text-white text-lg
+        bg-gradient-to-r ${card.color}
+        hover:shadow-2xl hover:shadow-current/30
+        transition-all duration-500 group/btn
+        flex items-center justify-center gap-3
+        border border-white/20 hover:border-white/40
+        transform hover:translate-y-[-2px]
+      `}>
+        <ExternalLink className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform duration-300" />
+        FOLLOW NOW
+      </button>
+    </div>
+  );
+}
+
+function SocialMedia() {
+  return (
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Enhanced background with multiple layers */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900 via-red-950 to-black"></div>
+      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-red-900/20 to-purple-900/10"></div>
+      
+      {/* Enhanced animated background orbs */}
+      <div className="absolute top-10 left-10 w-96 h-96 bg-red-500/15 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-pink-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-yellow-500/8 rounded-full blur-3xl animate-pulse delay-3000"></div>
+      
+      {/* Content with enhanced spacing */}
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+        {/* Enhanced header */}
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 bg-gradient-to-r from-white via-red-200 to-pink-200 bg-clip-text text-transparent leading-tight">
+            YUNG RAVAGE
           </h1>
-          <p className="text-gray-300 text-xl font-medium">Follow the journey across all platforms</p>
+          <p className="text-white/80 text-lg sm:text-xl lg:text-2xl font-semibold max-w-2xl mx-auto leading-relaxed">
+            Connect With Me Across All Platforms
+          </p>
+          <div className="mt-6 w-24 h-1 bg-gradient-to-r from-red-500 to-pink-500 mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-3 mb-10">
-          {socialLinks.map((link) => {
-            const IconComponent = link.icon
-            return (
-              <a
-                key={link.name}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative block bg-gray-800/60 backdrop-blur-xl border border-gray-700/60 hover:border-cyan-400/80 rounded-2xl p-8 transition-all duration-500 hover:bg-gray-800/80 hover:shadow-2xl hover:shadow-cyan-400/30 hover:scale-[1.03] hover:-translate-y-1"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="relative flex flex-col items-center text-center space-y-6">
-                  <div
-                    className={`p-6 rounded-2xl bg-gradient-to-r ${link.color} shadow-2xl shadow-gray-900/40 group-hover:shadow-3xl group-hover:shadow-cyan-400/50 transition-all duration-500 group-hover:scale-110 ring-1 ring-white/10 group-hover:ring-cyan-400/30`}
-                  >
-                    <IconComponent />
-                  </div>
-
-                  <div className="space-y-3">
-                    <h3 className="text-2xl font-bold text-white group-hover:bg-gradient-to-r group-hover:from-cyan-300 group-hover:to-white group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
-                      {link.name}
-                    </h3>
-                    <p className="text-gray-400 text-lg font-medium group-hover:text-gray-300 transition-colors duration-300">
-                      {link.stats}
-                    </p>
-                  </div>
-
-                  <div className="w-full pt-4">
-                    <div className="px-8 py-4 bg-gray-700/60 backdrop-blur-sm border border-gray-600/60 rounded-xl group-hover:border-cyan-400/80 group-hover:bg-gray-700/80 group-hover:shadow-lg group-hover:shadow-cyan-400/30 transition-all duration-300">
-                      <span className="text-white text-lg font-semibold tracking-wide group-hover:text-cyan-300 transition-colors duration-300">
-                        Follow & Connect
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            )
-          })}
+        {/* Enhanced responsive grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 max-w-7xl mx-auto">
+          {socialData.map((card, index) => (
+            <div 
+              key={index}
+              className="transform transition-all duration-500"
+              style={{
+                animationDelay: `${index * 200}ms`,
+                animation: 'fadeInUp 0.8s ease-out forwards'
+              }}
+            >
+              <SocialMediaCard card={card} />
+            </div>
+          ))}
         </div>
 
-        <div className="text-center pt-10 border-t border-gray-700/60">
-          <div className="inline-flex items-center space-x-4 text-gray-300 bg-gray-800/60 backdrop-blur-sm px-8 py-4 rounded-full border border-gray-700/60 shadow-lg shadow-cyan-500/10">
-            <Music className="w-6 h-6 text-cyan-400" />
-            <p className="text-lg italic font-medium">"Creating lanes where we all shine"</p>
-            <Music className="w-6 h-6 text-cyan-400" />
+        {/* Enhanced footer stats */}
+        <div className="mt-16 sm:mt-20 lg:mt-24 text-center">
+          <div className="flex flex-wrap justify-center gap-8 sm:gap-12 lg:gap-16 text-white/70">
+            <div className="text-center group">
+              <div className="text-3xl sm:text-4xl font-black text-white mb-2 group-hover:scale-110 transition-transform duration-300">312K+</div>
+              <div className="text-sm sm:text-base font-semibold tracking-wide">Total Followers</div>
+            </div>
+            <div className="text-center group">
+              <div className="text-3xl sm:text-4xl font-black text-white mb-2 group-hover:scale-110 transition-transform duration-300">10.6%</div>
+              <div className="text-sm sm:text-base font-semibold tracking-wide">Avg Engagement</div>
+            </div>
+            <div className="text-center group">
+              <div className="text-3xl sm:text-4xl font-black text-white mb-2 group-hover:scale-110 transition-transform duration-300">4.8</div>
+              <div className="text-sm sm:text-base font-semibold tracking-wide">Average Rating</div>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* CSS Animation Keyframes */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </div>
-  )
+  );
 }
+
+export default SocialMedia;

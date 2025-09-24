@@ -8,7 +8,7 @@ export default function HeroSection() {
       {/* Background with Red Gradients matching reference */}
       <div className="absolute inset-0 z-0">
         {/* Base dark background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black to-black" />
         
         {/* Left Red Gradient Shape - matching reference */}
         <div className="absolute -left-32 top-0 h-full w-96 bg-gradient-to-r from-red-600/40 via-red-500/30 to-transparent transform -skew-x-12" />

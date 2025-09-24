@@ -177,7 +177,7 @@ export default function ContactSection() {
             <motion.div className="max-w-4xl mx-auto px-4" variants={itemVariants}>
               <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 leading-relaxed font-medium mb-4 sm:mb-6">
                 Ready to create something{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-crimson-500 font-bold">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-white font-bold">
                   legendary
                 </span>
                 ?
@@ -344,7 +344,7 @@ export default function ContactSection() {
                     </div>
                     <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 sm:mb-6 leading-tight">
                       Send Your{" "}
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-crimson-500">
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-white">
                         Message
                       </span>
                     </h3>

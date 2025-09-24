@@ -17,8 +17,7 @@ export default function AboutSection() {
 
   // Text content for typing animation
   const textContent = [
-    "Zach Garsson — Born on the southside of Connecticut, aims to change the entertainment industry with music.",
-    "Louie Z embodies the fusion of street elegance and raw dedication. With over a decade in the music scene, his journey from Connecticut has been a vessel for relentless grind and a passionate commitment to his craft. His unique sound and powerful presence set him apart, making him a force to be reckoned with in the hip-hop world.",
+    "Robert Bernard — Born in Atlanta Georgia and raised in Detroit Michigan. I want to just leave a legacy for my daughter to live by. I want to leave a stamp on the world as a mogul artist. An artist that spreads light and positivity. Giving people the motivation to achieve what they want from life..",
   ]
 
   // Intersection Observer to detect when section is visible
@@ -121,7 +120,7 @@ export default function AboutSection() {
   }, [isVisible])
 
   // Word-by-word animation for "Jae Kush"
-  const nameWords = ["Louie", "Z"]
+  const nameWords = ["YUNG", "RAVAGE"]
   const wordVariants = {
     hidden: { opacity: 0, y: 50, rotateX: -90 },
     visible: (i: number) => ({
@@ -163,7 +162,7 @@ export default function AboutSection() {
       className="relative py-24 px-6 md:px-12 overflow-hidden min-h-screen"
       style={{
         background: `
-          linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%),
+          linear-gradient(135deg, #4a0e0eff 0%, #4b1b1bff 50%, #2a0f0fff 100%),
           linear-gradient(90deg, rgba(30, 41, 59, 0.3) 1px, transparent 1px),
           linear-gradient(rgba(30, 41, 59, 0.3) 1px, transparent 1px)
         `,
@@ -211,9 +210,9 @@ export default function AboutSection() {
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900/60 border border-slate-700/50 mb-8 backdrop-blur-sm"
             variants={fadeInUp}
           >
-            <Sparkles className="w-5 h-5 text-blue-400" />
+            <Sparkles className="w-5 h-5 text-red-400" />
             <span className="text-slate-300 font-semibold tracking-wide">ARTIST SPOTLIGHT</span>
-            <Sparkles className="w-5 h-5 text-blue-400" />
+            <Sparkles className="w-5 h-5 text-red-400" />
           </motion.div>
 
           <div className="text-6xl md:text-8xl font-black mb-6 leading-tight">
@@ -229,7 +228,7 @@ export default function AboutSection() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className="italic font-light bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+                  className="italic font-light bg-gradient-to-r from-red-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
                 >
                   {word}
                 </motion.span>
@@ -249,23 +248,23 @@ export default function AboutSection() {
             variants={staggerContainer}
           >
             <motion.div
-              className="relative p-8 rounded-3xl bg-slate-950/80 backdrop-blur-xl border border-slate-800/50 shadow-2xl"
+              className="relative p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-slate-800/50 shadow-2xl"
               variants={fadeInUp}
             >
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-900/10 via-transparent to-purple-900/10" />
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-red-900/10 via-transparent to-transparent" />
 
               <div className="relative z-10">
                 {/* Origin Story */}
                 <motion.div className="mb-8" variants={fadeInUp}>
                   <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+                    <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse" />
                     {currentTextIndex === 0 ? "Origin Story" : "The Artist"}
                   </h3>
                   <div className="text-xl text-slate-200 leading-relaxed font-light min-h-[120px]">
                     {displayedText}
                     {isTyping && isVisible && (
                       <motion.span
-                        className="inline-block w-0.5 h-6 bg-blue-400 ml-1"
+                        className="inline-block w-0.5 h-6 bg-red-400 ml-1"
                         animate={{ opacity: [0, 1, 0] }}
                         transition={{ duration: 0.8, repeat: Number.POSITIVE_INFINITY }}
                       />
@@ -278,7 +277,7 @@ export default function AboutSection() {
                 {/* Stats */}
                 <motion.div className="grid grid-cols-2 gap-6" variants={fadeInUp}>
                   <div className="text-center p-4 rounded-xl bg-slate-900/50 border border-slate-800/30">
-                    <div className="text-3xl font-bold text-blue-400 mb-1">10+</div>
+                    <div className="text-3xl font-bold text-red-400 mb-1">10+</div>
                     <div className="text-sm text-slate-400 uppercase tracking-wide">Years Experience</div>
                   </div>
                   <div className="text-center p-4 rounded-xl bg-slate-900/50 border border-slate-800/30">
@@ -301,7 +300,7 @@ export default function AboutSection() {
             {/* Animated Background Elements */}
             <div className="absolute inset-0 flex items-center justify-center">
               <motion.div
-                className="w-[500px] h-[500px] rounded-full border-2 border-blue-400/20"
+                className="w-[500px] h-[500px] rounded-full border-2 border-red-400/20"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
               />
@@ -315,17 +314,17 @@ export default function AboutSection() {
             {/* Main Professional Image Container */}
             <div className="relative z-10">
               {/* Glowing Background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-full blur-3xl scale-110 animate-pulse" />
+              <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 via-purple-500/20 to-pink-500/20 rounded-full blur-3xl scale-110 animate-pulse" />
 
               {/* Professional Border Ring */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 p-1 animate-pulse">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-400 via-purple-400 to-pink-400 p-1 animate-pulse">
                 <div className="w-full h-full rounded-full bg-slate-950" />
               </div>
 
               {/* Image Container */}
-              <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-slate-800/50 shadow-2xl shadow-blue-500/20">
+              <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-slate-800/50 shadow-2xl shadow-red-500/20">
                 <Image
-                  src="/profile.jpg"
+                  src="https://res.cloudinary.com/diml90c1y/image/upload/v1758681482/PHOTO-2025-09-07-00-54-43_sahgi2.jpg"
                   alt="Jae Kush - Professional Artist Portrait"
                   fill
                   className="object-cover hover:scale-110 transition-transform duration-700 ease-out"
@@ -336,7 +335,7 @@ export default function AboutSection() {
 
                 {/* Sparkle Effects */}
                 <motion.div
-                  className="absolute top-4 right-4 text-blue-400"
+                  className="absolute top-4 right-4 text-red-400"
                   animate={{
                     scale: [1, 1.2, 1],
                     rotate: [0, 180, 360],
@@ -368,7 +367,7 @@ export default function AboutSection() {
                 whileHover={{ scale: 1.05 }}
               >
                 <div className="text-center">
-                  <span className="text-white font-bold text-xl tracking-wide bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  <span className="text-white font-bold text-xl tracking-wide bg-gradient-to-r from-red-400 to-purple-400 bg-clip-text text-transparent">
                    Yung 
                   </span>
                 </div>
@@ -376,7 +375,7 @@ export default function AboutSection() {
 
               {/* Floating Achievement Badges */}
               <motion.div
-                className="absolute -top-4 -left-4 px-3 py-2 bg-blue-500/90 backdrop-blur-sm rounded-full text-white text-xs font-bold shadow-lg"
+                className="absolute -top-4 -left-4 px-3 py-2 bg-red-500/90 backdrop-blur-sm rounded-full text-white text-xs font-bold shadow-lg"
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
@@ -394,7 +393,7 @@ export default function AboutSection() {
                 animate={{ y: [5, -5, 5] }}
                 transition={{ duration: 2.5, repeat: Number.POSITIVE_INFINITY }}
               >
-                Connecticut
+                Atlanta
               </motion.div>
             </div>
           </motion.div>

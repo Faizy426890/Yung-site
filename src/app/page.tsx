@@ -8,8 +8,9 @@ import MusicSection from "./components/Music-Section"
 import ContactSection from "./components/contact-section"
 import HeroSection from "./components/Hero-section"
 import OutNowSection from "./components/outnow-section"
-import { useState, useEffect } from "react" 
-import { SocialMediaLinks } from "./components/Links"
+import { useState, useEffect } from "react"   
+import SocialMedia from "./components/Links"
+import SocialSection from "./components/Social"
 import AboutSection from "./components/About"
 
 export default function BlacRubyPortfolio() {
@@ -104,15 +105,65 @@ export default function BlacRubyPortfolio() {
   return (
     <div className="min-h-screen bg-white text-white font-sans overflow-hidden relative">
       {/* Checkered Background Pattern */}
-     <HeroSection/> 
-     <MusicSection /> 
+     <HeroSection/>  
+     <AboutSection/>
+     <MusicSection />  
+     <SocialMedia/>
 
       {/* Mobile Sidebar */}
    
 
       {/* Professional Glassy Navbar */}
      
-      <OutNowSection/>
+      <OutNowSection/> 
+          <section className="py-20 px-6 md:px-12 bg-gradient-to-b from-red-950 to-black relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              className="relative text-2xl md:text-3xl italic font-medium text-white/90 leading-relaxed"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              variants={fadeInUp}
+            >
+              <span className="absolute left-0 top-0 text-6xl text-blue-400 opacity-50 -translate-x-8">"</span>
+              <p className="px-10">
+                Supporters expect me to go hard with my grind and never let up — what makes me different is my story,
+                dedication, and my drive to lead my brand to the top.
+              </p>
+              <span className="absolute right-0 bottom-0 text-6xl text-blue-400 opacity-50 translate-x-8">"</span>
+            </motion.div>
+            <motion.p
+              className="mt-8 text-lg font-semibold text-blue-400"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              variants={fadeInUp}
+            >
+              — YUNG RAVACE
+            </motion.p>
+
+            <motion.div
+              className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              variants={fadeInUp}
+            >
+              <Button
+                className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white border-0 px-8 py-3 rounded-full font-medium shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 transition-all duration-300 hover:scale-105"
+                onClick={() => window.open("https://www.instagram.com/yung_ravage?igsh=bnh0OXd2OXcyd3d2", "_blank")}
+              >
+                Follow for updates
+              </Button>
+              <Button
+                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0 px-8 py-3 rounded-full font-medium shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 hover:scale-105"
+                onClick={() => window.open("https://www.instagram.com/yung_ravage?igsh=bnh0OXd2OXcyd3d2", "_blank")}
+              >
+                Follow on Instagram
+              </Button>
+            </motion.div>
+          </div>
+        </section>
       <ContactSection />
 
       {/* Footer */}
