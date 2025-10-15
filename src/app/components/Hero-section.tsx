@@ -11,11 +11,11 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-black via-purple-950/30 to-black" />
         
         {/* Left Red Gradient Shape - matching reference */}
-        <div className="absolute -left-32 top-0 h-full w-96 bg-gradient-to-r from-black via-black to-transparent transform -skew-x-12" />
-        <div className="absolute -left-16 top-0 h-full w-80 bg-gradient-to-r from-black via-black  to-transparent transform -skew-x-12" />
+        <div className="absolute -left-32 top-0 h-full w-96 bg-gradient-to-r from-black via-purple-950/30 to-transparent transform -skew-x-12" />
+        <div className="absolute -left-16 top-0 h-full w-80 bg-gradient-to-r from-black via-purple-950/30   to-transparent transform -skew-x-12" />
         
         {/* Right Red Gradient Shape - matching reference */}
-        <div className="absolute -right-32 top-0 h-full w-96 bg-gradient-to-l from-black via-black to-transparent transform skew-x-12" />
+        <div className="absolute -right-32 top-0 h-full w-96 bg-gradient-to-l from-black via-purple-950/30  to-transparent transform skew-x-12" />
         <div className="absolute -right-16 top-0 h-full w-80 bg-gradient-to-l from-black  via-black  to-transparent transform skew-x-12" />
         
         {/* Top gradient glow */}
