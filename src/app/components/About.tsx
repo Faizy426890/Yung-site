@@ -162,7 +162,7 @@ export default function AboutSection() {
       className="relative py-24 px-6 md:px-12 overflow-hidden min-h-screen"
       style={{
         background: `
-          linear-gradient(135deg, #000000ff 0%, #000000ff 50%, #000000ff 100%),
+          linear-gradient(135deg, #000000ff 0%, #110318ff 50%, #000000ff 100%),
           linear-gradient(90deg, rgba(30, 41, 59, 0.3) 1px, transparent 1px),
           linear-gradient(rgba(30, 41, 59, 0.3) 1px, transparent 1px)
         `,
