@@ -11,18 +11,18 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black to-black" />
         
         {/* Left Red Gradient Shape - matching reference */}
-        <div className="absolute -left-32 top-0 h-full w-96 bg-gradient-to-r from-red-600/40 via-red-500/30 to-transparent transform -skew-x-12" />
-        <div className="absolute -left-16 top-0 h-full w-80 bg-gradient-to-r from-red-700/30 via-red-600/20 to-transparent transform -skew-x-12" />
+        <div className="absolute -left-32 top-0 h-full w-96 bg-gradient-to-r from-black via-black to-transparent transform -skew-x-12" />
+        <div className="absolute -left-16 top-0 h-full w-80 bg-gradient-to-r from-black via-black  to-transparent transform -skew-x-12" />
         
         {/* Right Red Gradient Shape - matching reference */}
-        <div className="absolute -right-32 top-0 h-full w-96 bg-gradient-to-l from-red-600/40 via-red-500/30 to-transparent transform skew-x-12" />
-        <div className="absolute -right-16 top-0 h-full w-80 bg-gradient-to-l from-red-700/30 via-red-600/20 to-transparent transform skew-x-12" />
+        <div className="absolute -right-32 top-0 h-full w-96 bg-gradient-to-l from-black via-black to-transparent transform skew-x-12" />
+        <div className="absolute -right-16 top-0 h-full w-80 bg-gradient-to-l from-black  via-black  to-transparent transform skew-x-12" />
         
         {/* Top gradient glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-40 bg-gradient-to-b from-red-500/20 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-40 bg-gradient-to-b from-black to-transparent" />
         
         {/* Bottom gradient glow */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-40 bg-gradient-to-t from-red-500/20 to-transparent" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-40 bg-gradient-to-t from-black to-transparent" />
       </div>
 
       {/* Main Content Container */}
@@ -154,13 +154,13 @@ export default function HeroSection() {
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{
-                  backgroundImage: `url('https://res.cloudinary.com/diml90c1y/image/upload/v1758331649/7bb10b39-e1c9-4538-8619-b29984e2c8a1_aqhlzn.jpg')`
+                  backgroundImage: `url('https://res.cloudinary.com/diml90c1y/image/upload/v1760520429/WhatsApp_Image_2025-10-15_at_2.11.53_AM_vphrov.jpg')`
                 }}
               />
               
               {/* Image Overlay for better integration */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
-              <div className="absolute inset-0 bg-gradient-to-r from-red-900/20 via-transparent to-red-900/20" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-red-900/20" />
               
               {/* Floating Performance Badge */}
               <div className="absolute top-6 right-6 backdrop-blur-lg bg-red-600/20 rounded-full px-4 py-2 border border-red-400/30">
