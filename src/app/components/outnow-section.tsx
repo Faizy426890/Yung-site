@@ -122,15 +122,16 @@ export default function OutNowSection() {
   }
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 bg-gradient-to-r from-black via-red-950 to-black relative overflow-hidden">
+    <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-black  to-black relative overflow-hidden">
       <div className="absolute inset-0 z-0">
+        {/* Primary floating gradient - larger and more prominent */}
         <motion.div
-          className="absolute top-1/4 right-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gradient-to-r from-red-600/25 via-red-500/20 to-red-700/25 rounded-full blur-3xl"
+          className="absolute top-1/4 right-1/4 w-80 h-80 sm:w-96 sm:h-96 md:w-[500px] md:h-[500px] bg-gradient-to-r from-purple-900/80 via-purple-900/90 to-purple-700/40 rounded-full blur-3xl"
           animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.6, 0.3],
-            x: [0, 30, 0],
-            y: [0, -20, 0],
+            scale: [1, 1.3, 1],
+            opacity: [0.4, 0.7, 0.4],
+            x: [0, 40, 0],
+            y: [0, -30, 0],
           }}
           transition={{
             duration: 12,
@@ -138,13 +139,14 @@ export default function OutNowSection() {
             ease: "easeInOut",
           }}
         />
+        {/* Secondary floating gradient - darker purple */}
         <motion.div
-          className="absolute bottom-1/4 left-1/4 w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 bg-gradient-to-r from-red-800/25 via-red-600/20 to-red-900/25 rounded-full blur-3xl"
+          className="absolute bottom-1/4 left-1/4 w-72 h-72 sm:w-80 sm:h-80 md:w-[450px] md:h-[450px] bg-gradient-to-r from-purple-900/35 via-purple-800/25 to-purple-950/35 rounded-full blur-3xl"
           animate={{
-            scale: [1.1, 1, 1.1],
-            opacity: [0.4, 0.7, 0.4],
-            x: [0, -25, 0],
-            y: [0, 25, 0],
+            scale: [1.2, 0.9, 1.2],
+            opacity: [0.5, 0.8, 0.5],
+            x: [0, -35, 0],
+            y: [0, 35, 0],
           }}
           transition={{
             duration: 14,
@@ -153,12 +155,12 @@ export default function OutNowSection() {
             delay: 2,
           }}
         />
-
+        {/* Tertiary accent gradient */}
         <motion.div
-          className="absolute top-1/2 left-1/2 w-32 h-32 sm:w-48 sm:h-48 bg-gradient-to-r from-red-400/20 to-red-600/20 rounded-full blur-2xl"
+          className="absolute top-1/2 left-1/2 w-40 h-40 sm:w-56 sm:h-56 md:w-80 md:h-80 bg-gradient-to-r from-purple-500/25 to-purple-700/25 rounded-full blur-2xl"
           animate={{
-            scale: [0.8, 1.3, 0.8],
-            opacity: [0.2, 0.5, 0.2],
+            scale: [0.8, 1.4, 0.8],
+            opacity: [0.3, 0.6, 0.3],
             rotate: [0, 180, 360],
           }}
           transition={{
@@ -168,9 +170,11 @@ export default function OutNowSection() {
           }}
         />
 
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(220,38,38,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(220,38,38,0.015)_1px,transparent_1px)] bg-[size:40px_40px] sm:bg-[size:60px_60px]" />
+        {/* Grid overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(147,51,234,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(147,51,234,0.03)_1px,transparent_1px)] bg-[size:40px_40px] sm:bg-[size:60px_60px]" />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-red-600/5 via-transparent to-red-800/5" />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-950/10 via-transparent to-purple-900/10" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -182,13 +186,13 @@ export default function OutNowSection() {
           variants={containerVariants}
         >
           <motion.div
-            className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-gradient-to-r from-red-600/15 via-red-500/10 to-red-700/15 backdrop-blur-xl border border-red-400/20 shadow-lg shadow-red-500/10 mb-6 sm:mb-8"
+            className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-gradient-to-r from-purple-600/20 via-purple-500/15 to-purple-700/20 backdrop-blur-xl border border-purple-500/30 shadow-lg shadow-purple-600/20 mb-6 sm:mb-8"
             variants={itemVariants}
           >
-            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-red-400 to-red-600 rounded-full animate-pulse shadow-sm shadow-red-400/50" />
-            <Music className="w-4 h-4 sm:w-5 sm:h-5 text-red-300" />
+            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full animate-pulse shadow-sm shadow-purple-400/50" />
+            <Music className="w-4 h-4 sm:w-5 sm:h-5 text-purple-300" />
             <span className="text-xs sm:text-sm font-semibold text-white/95 tracking-wide">Latest Releases</span>
-            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-red-600 to-red-400 rounded-full animate-pulse shadow-sm shadow-red-600/50" />
+            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-purple-600 to-purple-400 rounded-full animate-pulse shadow-sm shadow-purple-600/50" />
           </motion.div>
 
           <motion.h2
@@ -197,13 +201,13 @@ export default function OutNowSection() {
           >
             <span className="text-white drop-shadow-2xl">OUT</span>{" "}
             <span className="relative inline-block">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-300 via-red-400 to-red-500 drop-shadow-2xl">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-purple-400 to-purple-500 drop-shadow-2xl">
                 NOW
               </span>
-              <span className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-500 to-red-600 blur-sm opacity-70">
+              <span className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 blur-sm opacity-70">
                 NOW
               </span>
-              <span className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-700 blur-lg opacity-40">
+              <span className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 blur-lg opacity-40">
                 NOW
               </span>
             </span>
@@ -215,7 +219,7 @@ export default function OutNowSection() {
           >
             Experience the latest from Yung's musical journey.
             <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-300 to-red-500 font-semibold drop-shadow-sm">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-purple-500 font-semibold drop-shadow-sm">
               Each track tells a story of dedication, passion, and street elegance.
             </span>
           </motion.p>
@@ -242,11 +246,13 @@ export default function OutNowSection() {
                 rel="noopener noreferrer"
               >
                 <motion.div
-                  className="relative h-96 md:h-[28rem] lg:h-96 rounded-2xl overflow-hidden cursor-pointer shadow-2xl shadow-black/40"
+                  className="relative h-96 md:h-[28rem] lg:h-96 rounded-2xl overflow-hidden cursor-pointer shadow-2xl shadow-purple-950/60 border border-purple-500/20 group-hover:border-purple-400/40 transition-all duration-300"
                   whileHover={{ scale: 1.02, y: -8 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
                 >
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600/0 via-purple-500/0 to-purple-600/0 group-hover:from-purple-600/20 group-hover:via-purple-500/20 group-hover:to-purple-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 -z-10" />
+
                   <div className="absolute inset-0">
                     <img
                       src={song.thumbnail || "/placeholder.svg?height=600&width=400&query=music album cover"}
@@ -262,16 +268,16 @@ export default function OutNowSection() {
                   <div className="absolute inset-0 z-10 p-6 flex flex-col justify-between">
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 bg-gradient-to-br from-red-600 to-red-800 rounded-xl flex items-center justify-center shadow-lg">
+                        <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center shadow-lg shadow-purple-600/50">
                           <span className="text-white font-bold text-sm">{index + 1}</span>
                         </div>
-                        <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium text-white border border-white/20">
+                        <span className="px-3 py-1 bg-purple-500/20 backdrop-blur-sm rounded-full text-xs font-medium text-white border border-purple-400/30">
                           {song.genre}
                         </span>
                       </div>
 
                       <motion.div
-                        className="w-6 h-6 bg-gradient-to-r from-red-600 to-red-800 rounded-full flex items-center justify-center shadow-lg"
+                        className="w-6 h-6 bg-gradient-to-r from-purple-500 to-purple-700 rounded-full flex items-center justify-center shadow-lg shadow-purple-600/50"
                         animate={{
                           y: hoveredSong === song.id ? [-2, 2, -2] : 0,
                           rotate: hoveredSong === song.id ? [0, 180, 360] : 0,
@@ -288,7 +294,7 @@ export default function OutNowSection() {
 
                     <div className="absolute inset-0 flex items-center justify-center">
                       <motion.div
-                        className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 shadow-2xl opacity-0 group-hover:opacity-100 transition-all duration-300"
+                        className="w-16 h-16 bg-purple-500/30 backdrop-blur-md rounded-full flex items-center justify-center border border-purple-400/50 shadow-2xl shadow-purple-600/50 opacity-0 group-hover:opacity-100 transition-all duration-300"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -308,7 +314,7 @@ export default function OutNowSection() {
                         </span>
                       </div>
 
-                      <h3 className="text-xl md:text-2xl font-bold text-white leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-red-400 group-hover:to-red-600 transition-all duration-300">
+                      <h3 className="text-xl md:text-2xl font-bold text-white leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-300 group-hover:to-purple-500 transition-all duration-300">
                         {song.title}
                       </h3>
 
@@ -316,7 +322,7 @@ export default function OutNowSection() {
                         {song.description}
                       </p>
 
-                      <Button className="w-full bg-gradient-to-r from-green-600/90 to-green-500/90 hover:from-green-600 hover:to-green-500 border-green-500/20 shadow-green-500/25 group-hover:shadow-green-500/40 text-white font-semibold py-3 text-sm rounded-xl transition-all duration-300 backdrop-blur-sm border shadow-lg">
+                      <Button className="w-full bg-gradient-to-r from-purple-600/90 to-purple-500/90 hover:from-purple-600 hover:to-purple-500 border-purple-500/30 shadow-purple-600/30 group-hover:shadow-purple-500/50 text-white font-semibold py-3 text-sm rounded-xl transition-all duration-300 backdrop-blur-sm border shadow-lg">
                         <Play className="w-4 h-4 mr-2" />
                         Listen on Spotify
                         <ExternalLink className="w-4 h-4 ml-2" />
@@ -336,7 +342,7 @@ export default function OutNowSection() {
           viewport={{ once: true, amount: 0.3 }}
           variants={itemVariants}
         >
-          <div className="bg-gradient-to-r from-green-600/10 via-green-500/10 to-green-700/10 backdrop-blur-xl border border-white/15 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 max-w-4xl mx-auto shadow-2xl shadow-black/20">
+          <div className="bg-gradient-to-r from-purple-600/15 via-purple-500/10 to-purple-700/15 backdrop-blur-xl border border-purple-500/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 max-w-4xl mx-auto shadow-2xl shadow-purple-950/40">
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
               More Music Coming Soon
             </h3>
@@ -349,7 +355,7 @@ export default function OutNowSection() {
                 href="https://open.spotify.com/track/1EVFM1UupPNkM4KnAd7ack?si=qErNe2GMRnuDXZ9Ho4r7NA&nd=1&dlsi=9742a84ab2574fb8"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-sm sm:text-base inline-block"
+                className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-sm sm:text-base inline-block shadow-lg shadow-purple-600/40 transition-all duration-300"
               >
                 Follow on Spotify
               </a>

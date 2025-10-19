@@ -1,403 +1,412 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
-import { Star, Sparkles } from "lucide-react"
-import { useState, useEffect, useRef } from "react"
+import { useInView } from "react-intersection-observer"
+import { Music, Heart, Sparkles, Award, Users, TrendingUp } from "lucide-react"
 
 export default function AboutSection() {
-  const [currentTextIndex, setCurrentTextIndex] = useState(0)
-  const [displayedText, setDisplayedText] = useState("")
-  const [isTyping, setIsTyping] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
-  const [charIndex, setCharIndex] = useState(0)
-  const sectionRef = useRef<HTMLElement>(null)
-  const typingIntervalRef = useRef<NodeJS.Timeout | null>(null)
-  const nextTextTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
 
-  // Text content for typing animation
-  const textContent = [
-    "Robert Bernard — Born in Atlanta Georgia and raised in Detroit Michigan. I want to just leave a legacy for my daughter to live by. I want to leave a stamp on the world as a mogul artist. An artist that spreads light and positivity. Giving people the motivation to achieve what they want from life..",
-  ]
-
-  // Intersection Observer to detect when section is visible
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting)
-      },
-      {
-        threshold: 0.3, // Trigger when 30% of the section is visible
-        rootMargin: "-50px 0px -50px 0px", // Add some margin to prevent premature triggering
-      },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-    }
-  }, [])
-
-  // Clear intervals when component unmounts or becomes invisible
-  useEffect(() => {
-    if (!isVisible) {
-      // Clear any running intervals/timeouts when not visible
-      if (typingIntervalRef.current) {
-        clearInterval(typingIntervalRef.current)
-        typingIntervalRef.current = null
-      }
-      if (nextTextTimeoutRef.current) {
-        clearTimeout(nextTextTimeoutRef.current)
-        nextTextTimeoutRef.current = null
-      }
-      setIsTyping(false)
-    }
-  }, [isVisible])
-
-  // Letter-by-letter typing effect - only when visible
-  useEffect(() => {
-    if (!isVisible || currentTextIndex >= textContent.length) return
-
-    setIsTyping(true)
-    const text = textContent[currentTextIndex]
-
-    // Start from current character index or reset if starting new text
-    const startIndex = charIndex === 0 ? 0 : charIndex
-    setDisplayedText(text.slice(0, startIndex))
-
-    typingIntervalRef.current = setInterval(() => {
-      setCharIndex((prevIndex) => {
-        const newIndex = prevIndex + 1
-        if (newIndex <= text.length) {
-          setDisplayedText(text.slice(0, newIndex))
-
-          if (newIndex === text.length) {
-            // Finished typing current text
-            setIsTyping(false)
-
-            // Set timeout for next text
-            nextTextTimeoutRef.current = setTimeout(() => {
-              setCurrentTextIndex((prev) => (prev + 1) % textContent.length)
-              setCharIndex(0) // Reset character index for next text
-            }, 2000)
-
-            // Clear the typing interval
-            if (typingIntervalRef.current) {
-              clearInterval(typingIntervalRef.current)
-              typingIntervalRef.current = null
-            }
-          }
-
-          return newIndex
-        }
-        return prevIndex
-      })
-    }, 10) // Fast typing speed (10ms per character)
-
-    return () => {
-      if (typingIntervalRef.current) {
-        clearInterval(typingIntervalRef.current)
-        typingIntervalRef.current = null
-      }
-      if (nextTextTimeoutRef.current) {
-        clearTimeout(nextTextTimeoutRef.current)
-        nextTextTimeoutRef.current = null
-      }
-    }
-  }, [currentTextIndex, isVisible])
-
-  // Reset animation when becoming visible again
-  useEffect(() => {
-    if (isVisible && displayedText === "" && charIndex === 0) {
-      // Reset to start animation from beginning when section becomes visible
-      setCurrentTextIndex(0)
-    }
-  }, [isVisible])
-
-  // Word-by-word animation for "Jae Kush"
-  const nameWords = ["YUNG", "RAVAGE"]
-  const wordVariants = {
-    hidden: { opacity: 0, y: 50, rotateX: -90 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      rotateX: 0,
-      transition: {
-        delay: i * 0.3,
-        duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
-    }),
-  }
-
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  }
-
-  const staggerContainer = {
+  const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.15,
         delayChildren: 0.2,
       },
     },
   }
 
-  return (
-    <section
-      ref={sectionRef}
-      id="bio"
-      className="relative py-24 px-6 md:px-12 overflow-hidden min-h-screen"
-      style={{
-        background: `
-          linear-gradient(135deg, #000000ff 0%, #110318ff 50%, #000000ff 100%),
-          linear-gradient(90deg, rgba(30, 41, 59, 0.3) 1px, transparent 1px),
-          linear-gradient(rgba(30, 41, 59, 0.3) 1px, transparent 1px)
-        `,
-        backgroundSize: `100% 100%, 40px 40px, 40px 40px`,
-        backgroundPosition: `0 0, 0 0, 0 0`,
-      }}
-    >
-      {/* Enhanced Grid Overlay */}
-      <div
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(71, 85, 105, 0.4) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(71, 85, 105, 0.4) 1px, transparent 1px)
-          `,
-          backgroundSize: "40px 40px",
-        }}
-      />
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    },
+  }
 
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden opacity-10">
-        <motion.div
-          className="absolute top-20 left-10 w-32 h-32 border border-slate-600/20 rounded-full"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+  const floatVariants = {
+    animate: {
+      y: [-10, 10, -10],
+      transition: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+    }
+  }
+
+  return (
+    <section id="about" className="relative min-h-screen w-full overflow-hidden bg-black">
+      {/* Full Background Theme Image with Advanced Overlays */}
+      <div className="absolute inset-0">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15"
+          style={{
+            backgroundImage: "url('https://images.unsplash.com/photo-1508973379184-7517410fb0bc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmFwJTIwY29uY2VydHxlbnwwfHwwfHx8MA%3D%3D&fm=jpg&q=60&w=3000)",
+            filter: "brightness(0.8) contrast(1.2)"
+          }}
         />
-        <motion.div
-          className="absolute top-40 right-20 w-24 h-24 border border-slate-600/20 rounded-lg"
-          animate={{ rotate: -360 }}
-          transition={{ duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-        />
-        <div className="absolute bottom-32 left-1/4 w-16 h-16 bg-slate-800/30 rounded-full blur-xl" />
+        
+        {/* Multiple Dark Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-transparent to-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-t from-purple-950/20 via-transparent to-transparent" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Section Header with Word Animation */}
+      {/* Animated Purple Gradient Orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="text-center mb-16"
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.25, 0.45, 0.25],
+            x: [0, 60, 0],
+            y: [0, 40, 0],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-purple-600/30 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.4, 1],
+            opacity: [0.2, 0.4, 0.2],
+            x: [0, -50, 0],
+            y: [0, 50, 0],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+          className="absolute top-1/3 -right-32 w-[700px] h-[700px] bg-purple-700/25 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.15, 0.35, 0.15],
+            x: [0, 40, 0],
+            y: [0, -40, 0],
+          }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+          className="absolute bottom-0 left-1/4 w-[650px] h-[650px] bg-purple-800/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.35, 1],
+            opacity: [0.1, 0.3, 0.1],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-900/15 rounded-full blur-3xl"
+        />
+      </div>
+
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+        backgroundImage: `linear-gradient(rgba(147, 51, 234, 0.3) 1px, transparent 1px),
+                         linear-gradient(90deg, rgba(147, 51, 234, 0.3) 1px, transparent 1px)`,
+        backgroundSize: '50px 50px'
+      }} />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-20 md:py-28">
+        <motion.div
+          ref={ref}
+          variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={staggerContainer}
+          animate={inView ? "visible" : "hidden"}
+          className="space-y-20"
         >
-          <motion.div
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900/60 border border-slate-700/50 mb-8 backdrop-blur-sm"
-            variants={fadeInUp}
-          >
-            <Sparkles className="w-5 h-5 text-red-400" />
-            <span className="text-slate-300 font-semibold tracking-wide">ARTIST SPOTLIGHT</span>
-            <Sparkles className="w-5 h-5 text-red-400" />
+          {/* Hero Header */}
+          <motion.div variants={itemVariants} className="text-center space-y-6 max-w-4xl mx-auto">
+            <motion.div
+              variants={floatVariants}
+              animate="animate"
+              className="inline-block"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-600/10 border border-purple-500/30 backdrop-blur-xl">
+                <Sparkles className="w-4 h-4 text-purple-400" />
+                <span className="text-sm font-medium text-purple-300">Legacy Artist</span>
+              </div>
+            </motion.div>
+
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight">
+              The Art{" "}
+              <span className="relative inline-block">
+                <span className="bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 bg-clip-text text-transparent">
+                  Robert Bernard
+                </span>
+                <motion.div
+                  className="absolute -inset-2 bg-gradient-to-r from-purple-600/20 to-purple-900/20 rounded-lg blur-2xl -z-10"
+                  animate={{ opacity: [0.3, 0.6, 0.3] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                />
+              </span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
+              A Journey of Legacy, Art, and Positivity
+            </p>
           </motion.div>
 
-          <div className="text-6xl md:text-8xl font-black mb-6 leading-tight">
-            <motion.div variants={fadeInUp} className="text-white mb-2">
-              About
+          {/* Main Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+            {/* Left: Bio Content */}
+            <motion.div variants={itemVariants} className="space-y-8">
+              <div className="group relative backdrop-blur-2xl bg-gradient-to-br from-black/80 to-purple-950/20 border border-purple-500/30 rounded-3xl p-8 md:p-10 hover:border-purple-500/60 transition-all duration-500 shadow-2xl">
+                {/* Glow Effect */}
+                <div className="absolute -inset-[1px] bg-gradient-to-r from-purple-600/0 via-purple-600/50 to-purple-600/0 rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 -z-10" />
+                
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 rounded-xl bg-purple-600/20 border border-purple-500/30">
+                    <Music className="w-6 h-6 text-purple-400" />
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-white">The Artist</h2>
+                </div>
+
+                <div className="space-y-5 text-gray-200 leading-relaxed">
+                  <p className="text-base md:text-lg">
+                    Born in Atlanta, Georgia and raised in Detroit, Michigan, Robert Bernard is more than just an
+                    artist—he's a visionary with a purpose. His journey is rooted in the desire to create lasting
+                    impact, not just for himself, but for generations to come.
+                  </p>
+
+                  <div className="relative p-5 rounded-2xl bg-purple-900/20 border border-purple-500/20">
+                    <Heart className="absolute top-3 left-3 w-5 h-5 text-purple-400/50" />
+                    <p className="text-base md:text-lg pl-8">
+                      <span className="text-purple-300 font-semibold block mb-2">
+                        "I want to just leave a legacy for my daughter to live by."
+                      </span>
+                      This philosophy drives everything Robert does. He's committed to leaving a stamp on the world as a
+                      mogul artist—one who doesn't just create music, but spreads light and positivity through every note.
+                    </p>
+                  </div>
+
+                  <p className="text-base md:text-lg">
+                    As an artist that spreads light and positivity, Robert Bernard is dedicated to giving people the
+                    motivation to achieve what they want from life. His music is a beacon of hope, his presence an
+                    inspiration, and his legacy a testament to the power of purpose-driven artistry.
+                  </p>
+                </div>
+
+                <div className="mt-8 pt-8 border-t border-purple-500/20">
+                  <h3 className="text-xl font-bold text-white mb-5 flex items-center gap-2">
+                    <Award className="w-5 h-5 text-purple-400" />
+                    Core Values
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {[
+                      "Legacy & Family",
+                      "Artistic Excellence",
+                      "Spreading Positivity",
+                      "Empowering Others",
+                      "Authentic Expression",
+                      "Community Impact"
+                    ].map((value, idx) => (
+                      <motion.div
+                        key={idx}
+                        whileHover={{ x: 5 }}
+                        className="flex items-center gap-3 text-gray-300 p-3 rounded-lg bg-purple-900/10 hover:bg-purple-900/20 transition-colors border border-purple-500/10 hover:border-purple-500/30"
+                      >
+                        <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full" />
+                        <span className="text-sm font-medium">{value}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </motion.div>
-            <div className="flex justify-center items-center gap-4 flex-wrap">
-              {nameWords.map((word, index) => (
-                <motion.span
-                  key={index}
-                  custom={index}
-                  variants={wordVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  className="italic font-light bg-gradient-to-r from-red-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+
+            {/* Right: Theme Image & Additional Info */}
+            <motion.div variants={itemVariants} className="space-y-8">
+              {/* Main Theme Image */}
+              <div className="group relative">
+                <div className="relative h-[400px] md:h-[550px] rounded-3xl overflow-hidden">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                    style={{
+                      backgroundImage: "url('https://images.unsplash.com/photo-1508973379184-7517410fb0bc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmFwJTIwY29uY2VydHxlbnwwfHwwfHx8MA%3D%3D&fm=jpg&q=60&w=3000')"
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  {/* Border */}
+                  <div className="absolute inset-0 border-2 border-purple-500/40 rounded-3xl group-hover:border-purple-400/60 transition-colors duration-500" />
+                  
+                  {/* Glow Effect */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/30 via-purple-700/30 to-purple-900/30 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+                  
+                  {/* Content Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <h3 className="text-2xl font-bold text-white mb-2">The Visionary</h3>
+                    <p className="text-gray-300 text-sm">Crafting Legacy Through Music</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quick Stats Cards */}
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { icon: TrendingUp, label: "Years Active", value: "10+", color: "purple" },
+                  { icon: Music, label: "Projects", value: "50+", color: "purple" },
+                ].map((stat, idx) => (
+                  <motion.div
+                    key={idx}
+                    whileHover={{ y: -5 }}
+                    className="relative backdrop-blur-2xl bg-gradient-to-br from-black/80 to-purple-950/20 border border-purple-500/30 rounded-2xl p-6 hover:border-purple-500/60 transition-all duration-300 shadow-xl group"
+                  >
+                    <stat.icon className="w-8 h-8 text-purple-400 mb-3" />
+                    <p className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+                      {stat.value}
+                    </p>
+                    <p className="text-sm text-gray-400 mt-1">{stat.label}</p>
+                    
+                    {/* Glow on hover */}
+                    <div className="absolute -inset-[1px] bg-gradient-to-r from-purple-600/0 via-purple-600/50 to-purple-600/0 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 -z-10" />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Gallery Section */}
+          <motion.div variants={itemVariants} className="space-y-8">
+            <div className="text-center space-y-3">
+              <h2 className="text-4xl md:text-5xl font-bold text-white">Journey Captured</h2>
+              <p className="text-gray-400">Moments that define the legacy</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                {
+                  src: "https://res.cloudinary.com/diml90c1y/image/upload/v1760915727/PHOTO-2025-10-15-14-11-53_eszsbl.jpg",
+                  alt: "Robert Bernard - Moment 1",
+                  title: "The Artist at Work",
+                  desc: "Creating magic in the studio"
+                },
+                {
+                  src: "https://res.cloudinary.com/diml90c1y/image/upload/v1760915750/PHOTO-2025-10-15-14-11-58_svk5uu.jpg",
+                  alt: "Robert Bernard - Moment 2",
+                  title: "Creative Expression",
+                  desc: "Living the artistic vision"
+                },
+              ].map((image, idx) => (
+                <motion.div
+                  key={idx}
+                  whileHover={{ y: -10 }}
+                  className="group relative h-96 rounded-2xl overflow-hidden"
                 >
-                  {word}
-                </motion.span>
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                    style={{ backgroundImage: `url('${image.src}')` }}
+                  />
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  {/* Content */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <h3 className="text-2xl font-bold text-white mb-2">{image.title}</h3>
+                    <p className="text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                      {image.desc}
+                    </p>
+                  </div>
+
+                  {/* Border & Glow */}
+                  <div className="absolute inset-0 border-2 border-purple-500/30 rounded-2xl group-hover:border-purple-400/60 transition-colors duration-500" />
+                  <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/20 via-purple-700/20 to-purple-900/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+                </motion.div>
               ))}
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Text Content with Typing Animation */}
-          <motion.div
-            className="space-y-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            variants={staggerContainer}
-          >
-            <motion.div
-              className="relative p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-slate-800/50 shadow-2xl"
-              variants={fadeInUp}
-            >
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-red-900/10 via-transparent to-transparent" />
+          {/* Enhanced Stats Section */}
+          <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { label: "Years Active", value: "10+", icon: TrendingUp },
+              { label: "Projects", value: "50+", icon: Music },
+              { label: "Global Reach", value: "1M+", icon: Users },
+              { label: "Impact", value: "∞", icon: Heart },
+            ].map((stat, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="relative backdrop-blur-2xl bg-gradient-to-br from-black/80 to-purple-950/20 border border-purple-500/30 rounded-2xl p-6 text-center hover:border-purple-500/60 transition-all duration-300 shadow-xl group"
+              >
+                <stat.icon className="w-8 h-8 text-purple-400 mx-auto mb-3" />
+                <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+                  {stat.value}
+                </p>
+                <p className="text-sm md:text-base text-gray-400 mt-2">{stat.label}</p>
+                
+                {/* Hover Glow */}
+                <div className="absolute -inset-[1px] bg-gradient-to-r from-purple-600/0 via-purple-600/50 to-purple-600/0 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 -z-10" />
+              </motion.div>
+            ))}
+          </motion.div>
 
+          {/* CTA Section */}
+          <motion.div variants={itemVariants} className="text-center space-y-6">
+            <div className="relative backdrop-blur-2xl bg-gradient-to-br from-purple-900/40 to-purple-950/30 border border-purple-500/50 rounded-3xl p-10 md:p-12 hover:border-purple-400/70 transition-all duration-500 shadow-2xl group overflow-hidden">
+              {/* Animated Background Pattern */}
+              <motion.div
+                className="absolute inset-0 opacity-10"
+                animate={{
+                  backgroundPosition: ["0% 0%", "100% 100%"],
+                }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                style={{
+                  backgroundImage: `radial-gradient(circle at center, rgba(147, 51, 234, 0.3) 1px, transparent 1px)`,
+                  backgroundSize: '50px 50px'
+                }}
+              />
+              
+              {/* Glow Effect */}
+              <div className="absolute -inset-[2px] bg-gradient-to-r from-purple-600/30 via-purple-500/30 to-purple-600/30 rounded-3xl opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500 -z-10" />
+              
               <div className="relative z-10">
-                {/* Origin Story */}
-                <motion.div className="mb-8" variants={fadeInUp}>
-                  <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                    <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse" />
-                    {currentTextIndex === 0 ? "Origin Story" : "The Artist"}
-                  </h3>
-                  <div className="text-xl text-slate-200 leading-relaxed font-light min-h-[120px]">
-                    {displayedText}
-                    {isTyping && isVisible && (
-                      <motion.span
-                        className="inline-block w-0.5 h-6 bg-red-400 ml-1"
-                        animate={{ opacity: [0, 1, 0] }}
-                        transition={{ duration: 0.8, repeat: Number.POSITIVE_INFINITY }}
-                      />
-                    )}
-                  </div>
-                </motion.div>
-
-                <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-slate-700/50 to-transparent mb-8" />
-
-                {/* Stats */}
-                <motion.div className="grid grid-cols-2 gap-6" variants={fadeInUp}>
-                  <div className="text-center p-4 rounded-xl bg-slate-900/50 border border-slate-800/30">
-                    <div className="text-3xl font-bold text-red-400 mb-1">10+</div>
-                    <div className="text-sm text-slate-400 uppercase tracking-wide">Years Experience</div>
-                  </div>
-                  <div className="text-center p-4 rounded-xl bg-slate-900/50 border border-slate-800/30">
-                    <div className="text-3xl font-bold text-purple-400 mb-1">∞</div>
-                    <div className="text-sm text-slate-400 uppercase tracking-wide">Dedication</div>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Professional Eye-Catching Image Section */}
-          <motion.div
-            className="relative flex justify-center lg:justify-end"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            {/* Animated Background Elements */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <motion.div
-                className="w-[500px] h-[500px] rounded-full border-2 border-red-400/20"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-              />
-              <motion.div
-                className="absolute w-[400px] h-[400px] rounded-full border border-purple-400/20"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-              />
-            </div>
-
-            {/* Main Professional Image Container */}
-            <div className="relative z-10">
-              {/* Glowing Background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 via-purple-500/20 to-pink-500/20 rounded-full blur-3xl scale-110 animate-pulse" />
-
-              {/* Professional Border Ring */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-400 via-purple-400 to-pink-400 p-1 animate-pulse">
-                <div className="w-full h-full rounded-full bg-slate-950" />
-              </div>
-
-              {/* Image Container */}
-              <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-slate-800/50 shadow-2xl shadow-red-500/20">
-                <Image
-                  src="https://res.cloudinary.com/diml90c1y/image/upload/v1758681482/PHOTO-2025-09-07-00-54-43_sahgi2.jpg"
-                  alt="Jae Kush - Professional Artist Portrait"
-                  fill
-                  className="object-cover hover:scale-110 transition-transform duration-700 ease-out"
-                />
-
-                {/* Professional Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
-
-                {/* Sparkle Effects */}
                 <motion.div
-                  className="absolute top-4 right-4 text-red-400"
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    rotate: [0, 180, 360],
-                  }}
-                  transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+                  variants={floatVariants}
+                  animate="animate"
+                  className="inline-block mb-4"
                 >
-                  <Sparkles className="w-6 h-6" />
+                  <Sparkles className="w-12 h-12 text-purple-400 mx-auto" />
                 </motion.div>
-
-                <motion.div
-                  className="absolute bottom-4 left-4 text-purple-400"
-                  animate={{
-                    scale: [1, 1.3, 1],
-                    rotate: [360, 180, 0],
-                  }}
-                  transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
-                >
-                  <Star className="w-5 h-5" />
-                </motion.div>
-              </div>
-
-              {/* Professional Name Badge */}
-              <motion.div
-                className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 px-8 py-4 bg-gradient-to-r from-slate-950/95 to-slate-900/95 backdrop-blur-xl rounded-2xl border border-slate-700/50 shadow-2xl"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="text-center">
-                  <span className="text-white font-bold text-xl tracking-wide bg-gradient-to-r from-red-400 to-purple-400 bg-clip-text text-transparent">
-                   Yung 
-                  </span>
+                
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Experience the Legacy
+                </h3>
+                <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+                  Join Robert Bernard on his journey of artistic excellence and positive impact. Discover music that
+                  inspires, motivates, and transforms.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href="https://www.youtube.com/channel/UCNKynbHhfQq58XWygZAfQlQ"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/btn relative px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-purple-600/50 overflow-hidden"
+                  >
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      <Music className="w-5 h-5" />
+                      Listen Now
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-purple-500 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
+                  </motion.a>
+                  
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href="/about"
+                    className="px-8 py-4 backdrop-blur-xl bg-white/10 border-2 border-purple-500/50 hover:border-purple-400/70 hover:bg-white/20 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
+                  >
+                    <Sparkles className="w-5 h-5" />
+                    Learn More
+                  </motion.a>
                 </div>
-              </motion.div>
-
-              {/* Floating Achievement Badges */}
-              <motion.div
-                className="absolute -top-4 -left-4 px-3 py-2 bg-red-500/90 backdrop-blur-sm rounded-full text-white text-xs font-bold shadow-lg"
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1, duration: 0.5 }}
-                animate={{ y: [-5, 5, -5] }}
-                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-              >
-                10+ YEARS
-              </motion.div>
-
-              <motion.div
-                className="absolute -top-4 -right-4 px-3 py-2 bg-purple-500/90 backdrop-blur-sm rounded-full text-white text-xs font-bold shadow-lg"
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.2, duration: 0.5 }}
-                animate={{ y: [5, -5, 5] }}
-                transition={{ duration: 2.5, repeat: Number.POSITIVE_INFINITY }}
-              >
-                Atlanta
-              </motion.div>
+              </div>
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

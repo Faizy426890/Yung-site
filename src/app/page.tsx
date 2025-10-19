@@ -5,13 +5,15 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { MenuIcon, X } from "lucide-react"
 import MusicSection from "./components/Music-Section"
-import ContactSection from "./components/contact-section"
+import ContactSection from "./components/contact-section" 
+import AboutSection from "./components/About"
 import HeroSection from "./components/Hero-section"
 import OutNowSection from "./components/outnow-section"
 import { useState, useEffect } from "react"   
 import SocialMedia from "./components/Links"
-import SocialSection from "./components/Social"
-import AboutSection from "./components/About"
+import SocialSection from "./components/Social" 
+import { Mail, Send, MapPin, Clock, Crown, Diamond, Mic } from "lucide-react"
+
 
 export default function BlacRubyPortfolio() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -25,6 +27,16 @@ export default function BlacRubyPortfolio() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+  const floatingVariants = {
+    animate: {
+      y: [-5, 5, -5],
+      transition: {
+        duration: 4,
+        repeat: Number.POSITIVE_INFINITY,
+        ease: "easeInOut",
+      },
+    },
+  }
 
   // Function to handle navigation and close sidebar
   const handleNavClick = (sectionId: string) => {
@@ -32,7 +44,8 @@ export default function BlacRubyPortfolio() {
     setTimeout(() => {
       document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
     }, 100)
-  }
+  } 
+
 
   // Word-by-word animation for "Jae Kush"
   const nameWords = ["Yung", ""]
@@ -106,64 +119,106 @@ export default function BlacRubyPortfolio() {
     <div className="min-h-screen bg-white text-white font-sans overflow-hidden relative">
       {/* Checkered Background Pattern */}
      <HeroSection/>  
-     <AboutSection/>
-     <MusicSection />  
-     <SocialMedia/>
+   
 
       {/* Mobile Sidebar */}
    
 
       {/* Professional Glassy Navbar */}
      
-      <OutNowSection/> 
-          <section className="py-20 px-6 md:px-12 bg-gradient-to-b from-red-950 to-black relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              className="relative text-2xl md:text-3xl italic font-medium text-white/90 leading-relaxed"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              variants={fadeInUp}
-            >
-              <span className="absolute left-0 top-0 text-6xl text-blue-400 opacity-50 -translate-x-8">"</span>
-              <p className="px-10">
-                Supporters expect me to go hard with my grind and never let up — what makes me different is my story,
-                dedication, and my drive to lead my brand to the top.
-              </p>
-              <span className="absolute right-0 bottom-0 text-6xl text-blue-400 opacity-50 translate-x-8">"</span>
-            </motion.div>
-            <motion.p
-              className="mt-8 text-lg font-semibold text-blue-400"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              variants={fadeInUp}
-            >
-              — YUNG RAVACE
-            </motion.p>
+      {/* <OutNowSection/>  */}
+        <section className="relative z-10 py-20 px-6 md:px-12 bg-gradient-to-b from-black to-black overflow-hidden">
+  {/* Background and Floating Elements */}
+  <div className="absolute inset-0 z-0 pointer-events-none">
+    {/* Purple gradient blobs - shifted to right */}
+    <div className="absolute top-1/4 right-1/5 w-64 sm:w-80 md:w-96 lg:w-[400px] h-64 sm:h-80 md:h-96 lg:h-[400px] bg-purple-950 rounded-full blur-3xl opacity-40" />
+    <div className="absolute bottom-1/4 right-1/5 w-48 sm:w-64 md:w-80 lg:w-[300px] h-48 sm:h-64 md:h-80 lg:h-[300px] bg-purple-950 rounded-full blur-3xl opacity-30" />
 
-            <motion.div
-              className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              variants={fadeInUp}
-            >
-              <Button
-                className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white border-0 px-8 py-3 rounded-full font-medium shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 transition-all duration-300 hover:scale-105"
-                onClick={() => window.open("https://www.instagram.com/yung_ravage?igsh=bnh0OXd2OXcyd3d2", "_blank")}
-              >
-                Follow for updates
-              </Button>
-              <Button
-                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0 px-8 py-3 rounded-full font-medium shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 hover:scale-105"
-                onClick={() => window.open("https://www.instagram.com/yung_ravage?igsh=bnh0OXd2OXcyd3d2", "_blank")}
-              >
-                Follow on Instagram
-              </Button>
-            </motion.div>
-          </div>
-        </section>
+    {/* Floating elements - no pointer blocking */}
+    <motion.div
+      className="absolute top-10 sm:top-16 md:top-20 right-8 sm:right-10 md:right-20 text-purple-900/80"
+      variants={floatingVariants}
+      animate="animate"
+    >
+      <Crown className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />
+    </motion.div>
+    <motion.div
+      className="absolute top-1/3 right-8 sm:right-10 md:right-20 text-purple-950"
+      variants={floatingVariants}
+      animate="animate"
+      transition={{ delay: 1 }}
+    >
+      <Diamond className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" />
+    </motion.div>
+    <motion.div
+      className="absolute bottom-16 sm:bottom-24 md:bottom-32 right-1/5 text-purple-950"
+      variants={floatingVariants}
+      animate="animate"
+      transition={{ delay: 2 }}
+    >
+      <Mic className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" />
+    </motion.div>
+
+    {/* Subtle grid overlay */}
+    <div className="absolute inset-0 bg-[linear-gradient(rgba(88,28,135,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(88,28,135,0.05)_1px,transparent_1px)] bg-[size:40px_40px] sm:bg-[size:50px_50px] md:bg-[size:60px_60px]" />
+  </div>
+
+  {/* Content Section */}
+  <div className="relative z-10 max-w-4xl mx-auto text-center">
+    <motion.div
+      className="relative text-2xl md:text-3xl italic font-medium text-white/90 leading-relaxed"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      variants={fadeInUp}
+    >
+      <span className="absolute right-0 top-0 text-6xl text-blue-400 opacity-50 -translate-x-8">"</span>
+      <p className="px-10">
+        Supporters expect me to go hard with my grind and never let up — what makes me different is my story,
+        dedication, and my drive to lead my brand to the top.
+      </p>
+      <span className="absolute right-0 bottom-0 text-6xl text-blue-400 opacity-50 translate-x-8">"</span>
+    </motion.div>
+
+    <motion.p
+      className="mt-8 text-lg font-semibold text-blue-400"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      variants={fadeInUp}
+    >
+      — YUNG RAVACE
+    </motion.p>
+
+    {/* Clickable Buttons (Fixed z-index) */}
+    <motion.div
+      className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center relative z-20"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      variants={fadeInUp}
+    >
+      <Button
+        className="bg-gradient-to-r cursor-pointer from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white border-0 px-8 py-3 rounded-full font-medium shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40 transition-all duration-300 hover:scale-105"
+        onClick={() =>
+          window.open("https://www.instagram.com/yung_ravage?igsh=bnh0OXd2OXcyd3d2", "_blank")
+        }
+      >
+        Follow for updates
+      </Button>
+      <Button
+        className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0 px-8 py-3 rounded-full font-medium shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 hover:scale-105"
+        onClick={() =>
+          window.open("https://www.instagram.com/yung_ravage?igsh=bnh0OXd2OXcyd3d2", "_blank")
+        }
+      >
+        Follow on Instagram
+      </Button>
+    </motion.div>
+  </div>
+</section> 
+
+  <AboutSection/>
       <ContactSection />
 
       {/* Footer */}

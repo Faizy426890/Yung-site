@@ -199,8 +199,8 @@ function SocialMediaCard({ card }: { card: SocialCard }) {
 function SocialMedia() {
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-950 to-black"></div>
-      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-purple-950/30 to-purple-900/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-black  to-black"></div>
+      <div className="absolute inset-0 bg-gradient-to-tr from-purple-950 via-black to-black"></div>
 
       <div className="absolute top-10 left-10 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-10 right-10 w-80 h-80 bg-purple-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>

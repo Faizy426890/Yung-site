@@ -5,7 +5,7 @@ import type React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import SiteNavbar from "./navbar"
-import { useIsMobile } from "@/hooks/use-mobile" // import hook to detect mobile
+import { useIsMobile } from "@/hooks/use-mobile"
 import {
   Sidebar,
   SidebarContent,
@@ -21,6 +21,7 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarSeparator,
+  useSidebar,
 } from "@/components/ui/sidebar"
 import { cn } from "@/lib/utils"
 import { italianno } from "@/lib/fonts"
@@ -33,8 +34,7 @@ const links = [
 ]
 
 export function AppShell({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname()
-  const isMobile = useIsMobile() // detect mobile
+  const isMobile = useIsMobile()
 
   return (
     <SidebarProvider>
@@ -60,18 +60,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <SidebarGroup>
               <SidebarGroupLabel>Discover</SidebarGroupLabel>
               <SidebarGroupContent>
-                <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton asChild>
-                      <Link href="/music">Latest Tracks</Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton asChild>
-                      <Link href="/platforms">Platforms</Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </SidebarMenu>
+                <DiscoverMenu />
               </SidebarGroupContent>
             </SidebarGroup>
           </SidebarContent>
@@ -82,7 +71,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </Sidebar>
       )}
 
-      {/* Render navbar and page content inside the provider/inset */}
       <SidebarInset>
         <SiteNavbar />
         <main id="main" className="min-h-[calc(100svh-4rem)] p-4 md:p-6">
@@ -95,6 +83,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
 function NavMenu() {
   const pathname = usePathname()
+  const { setOpenMobile } = useSidebar()
+
+  const handleClick = () => {
+    // Close sidebar on mobile when link is clicked
+    setOpenMobile(false)
+  }
 
   return (
     <SidebarMenu>
@@ -103,11 +97,41 @@ function NavMenu() {
         return (
           <SidebarMenuItem key={href}>
             <SidebarMenuButton asChild isActive={active}>
-              <Link href={href}>{label}</Link>
+              <Link href={href} onClick={handleClick}>
+                {label}
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         )
       })}
+    </SidebarMenu>
+  )
+}
+
+function DiscoverMenu() {
+  const { setOpenMobile } = useSidebar()
+
+  const handleClick = () => {
+    // Close sidebar on mobile when link is clicked
+    setOpenMobile(false)
+  }
+
+  return (
+    <SidebarMenu>
+      <SidebarMenuItem>
+        <SidebarMenuButton asChild>
+          <Link href="/music" onClick={handleClick}>
+            Latest Tracks
+          </Link>
+        </SidebarMenuButton>
+      </SidebarMenuItem>
+      <SidebarMenuItem>
+        <SidebarMenuButton asChild>
+          <Link href="/platforms" onClick={handleClick}>
+            Platforms
+          </Link>
+        </SidebarMenuButton>
+      </SidebarMenuItem>
     </SidebarMenu>
   )
 }
